@@ -1,0 +1,596 @@
+body {
+  margin-top: 70px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #F8F8FF;
+
+}
+
+a {
+  color: #00B7FF;
+}
+
+/* Connect Button throughout Website */
+.LBconnect{
+    display: inline-block;
+    background: ##4da6ff;
+    background: linear-gradient(#3399ff, #4da6ff);
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0);
+}
+
+/* navbar */
+/* https://work.smarchal.com/twbscolor/css/e74c3cc0392becf0f1ffbbbc0 */
+.navbar-brand{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 100;
+
+    
+}
+
+
+.navbar{
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    
+}
+
+/* body */
+#main {
+    margin-top: 20px;
+}
+
+
+/* Homepage */
+#Hfont{
+    font-family: 'Poppins', sans-serif;
+    font-size: 100px !important;
+    text-align: left;
+}
+
+/*
+.Hiambutt{
+    
+    display: inline-block;
+    background: ##4da6ff;
+    background: linear-gradient(#3399ff, #4da6ff);
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0);
+}
+
+.Hiambutt:hover{
+    color: aqua;
+    
+    
+}
+*/
+
+.Hbuttcontainer{
+    text-align: center;
+    
+    
+    
+}
+
+.Hsignup{
+    text-align: center;
+    font-family: segoe UI;
+}
+
+#Hlog{
+  
+    
+}
+
+#Htop{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 50px 100px;
+    align-items: center;
+    
+}
+
+.login-card {
+  padding: 40px;
+  width: 274px;
+  background-color: #F7F7F7;
+  font-family: segoe UI;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden; 
+}
+
+.login-card h1 {
+  font-weight: 100;
+  text-align: center;
+  font-size: 2.3em;
+  font-family: segoe UI;
+}
+
+.login-card input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.login-card input[type=text], input[type=password] {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  /* border-radius: 2px; */
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.login-card input[type=text]:hover, input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.login {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+/* border-radius: 3px; */
+/* -webkit-user-select: none;
+  user-select: none; */
+}
+
+.login-submit {
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  background-color: #4d90fe;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+}
+
+.login-submit:hover {
+  /* border: 1px solid #2f5bb7; */
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #357ae8;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+
+.login-card a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity ease 0.5s;
+}
+
+.login-card a:hover {
+  opacity: 1;
+}
+
+.login-help {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+}
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1400px;
+  position: relative;
+  margin: auto;
+  margin-top: 58px;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+
+
+
+
+/* Agency Profile */
+
+.APcontainer{
+      
+}
+
+#APbutton{
+    margin-left: 900px;
+    font-family: Tahoma, Geneva, sans-serif;	   
+}
+
+h1{
+    text-align: center;
+    font-family: Tahoma, Geneva, sans-serif;
+    
+}
+
+#APlogo{
+    background: #DCDCDC;
+    margin: 0 0 20px ;
+    padding: 40px;
+    width: 320px;
+    height: 320px;
+    text-align: center;
+    border: solid 1px black;
+    margin-left: auto;
+    margin-right: auto;
+    
+    
+    
+}
+
+#APdescription{
+    background: #FFFAFA;
+    margin: 0 0 20px ;
+    padding: 40px;
+    text-align: center;
+    border: solid 1px black;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Tahoma, Geneva, sans-serif;
+    
+    
+    
+}
+
+#APpreference{
+    background: #C0C0C0;
+    margin: 0 0 20px ;
+    padding: 40px;
+    text-align: center;
+    border: solid 1px black;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Tahoma, Geneva, sans-serif;
+    
+}
+
+#APcontactinfo{
+    background: #F5F5F5;
+    margin: 0 0 20px ;
+    padding: 40px;
+    text-align: center;
+    border: solid 1px black;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Tahoma, Geneva, sans-serif;
+    
+    
+}
+
+#APmessagebutt{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Tahoma, Geneva, sans-serif;
+    
+}
+
+.APmaster{
+    width: 80%;
+}
+
+/* Talent Profile */
+
+#TPbutton{
+    margin-left: 900px;
+    font-family: Tahoma, Geneva, sans-serif;	
+
+}
+
+#TPcontainer{
+    margin: 0 0 20px ;
+    padding: 40px;
+    text-align: center;
+    
+}
+
+#TPmeas{
+    border: solid 1px black;
+    
+}
+
+#TPbio{
+    border: solid 1px black;
+    
+    
+}
+
+#TPort{
+    text-align: center;
+    
+}
+
+#TPortforlio{
+     display: grid;
+     margin: 0 auto;
+     display: flex;
+     flex-wrap: wrap;
+     align-content: stretch;
+     height: 100%;
+}
+
+#TPic1{
+    border: solid 1px black;
+    padding: 140px;
+
+    
+}
+
+#TPic2{
+   border: solid 1px black;
+   padding: 140px;
+}
+
+#TPlink{
+    text-align: center;
+    
+}
+
+#TPback{
+    margin-left:200px;
+    
+}
+
+#TPcontacts{
+    margin-left:1000px;
+    
+}
+
+
+/* Inbox Page */
+
+#Igo{
+    width: 27.3%;
+    
+    
+}
+
+.Ipic {
+  position: relative;
+  width: 20%;
+  border: solid 1px black;
+}
+
+.Ipic:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+
+.Ibox{
+    border: solid 1px black;
+    width: 383px;
+    
+}
+
+
+/* Chat containers for inbox page */
+/* https://www.w3schools.com/howto/howto_css_chat.asp */
+.container {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    
+}
+
+/* Darker chat container */
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+/* Clear floats */
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Style images */
+.container img {
+    height: 75%;
+    width: 75%;
+}
+
+/* Style the right image */
+
+/* Style time text */
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+    float: left;
+    color: #999;
+}
+
+/* Talent Browsing Page */
+
+.TBcont{
+    box-sizing: border-box;
+    width: 25%;
+    border: solid 1px black;
+    
+}
+
+.TBpCont{
+    box-sizing: border-box;
+    width: 65%;
+    border: solid 1px black;
+    
+}
+
+/* Agency Browsing Page */
+.ABcont{
+    box-sizing: border-box;
+    width: 25%;
+    border: solid 1px black;
+    height: 75%;
+}
+
+.ABimg{
+    box-sizing: border-box;
+    border: solid 1px black;
+    
+}
+
+.ABconmess{
+    box-sizing: border-box;
+    border: solid 1px black;
+    text-align: center;
+    
+}
+
+/* Comp Card */
+
+.Cheadshot{
+    border: solid 3px black;
+    padding: 100px;
+    width: 25.5%;
+    height: 100%;
+    
+}
+.CMastercon{
+    
+}
+
+.Ccontent-container { 
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  height: 100%;
+}
+
+.Ccontent-container2 { 
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  height: 100%;
+}
+
+.Cinner-square{
+    border: solid 2px black;
+    padding: 100px;
+    
+}
+
+.Csharecont{
+    text-align: center;
+    
+}
+.Cshare{
+
+    
+}
+
+
