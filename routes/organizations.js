@@ -47,12 +47,13 @@ router.post('/agency', (req, res, next) => {
 router.get('/agency/:id', (req, res, next) => {
     
   // 2
-  Org.findById(req.body.id, (err, org) => {
+  Org.findById(req.param._id, (err, org) => {
     if (err) {
       console.log(err);
     }
 
     // 3
+      console.log(org)
     res.render('agency/agencyprofile', {
       org: org
     });

@@ -1,6 +1,6 @@
 <div class="APcontainer">
     {{#each org}}
-<h1>{{user.name}}</h1>
+<h1>{{this.name}}</h1>
 
 
     <div id="APbutton">
@@ -18,24 +18,24 @@
                 <div id="APpreference" class="APmaster">
                     <ul>
                         <li><h3>Talent Preference List</h3></li>
-                        <li>Height Range: {{organization.height}} </li>
-                        <li>Eye Colors: {{organization.eye}} </li>
-                        <li>Waists: {{organization.waist}} </li>
-                        <li>Busts: {{organization.bust}} </li>
-                        <li>Hair Colors: {{organization.hair}} </li>
+                        <li>Height Range: {{this.height}} </li>
+                        <li>Eye Colors: {{this.eye}} </li>
+                        <li>Waists: {{this.waist}} </li>
+                        <li>Busts: {{this.bust}} </li>
+                        <li>Hair Colors: {{this.hair}} </li>
                         <li><a href="">Edit</a></li>
                     </ul>
                 </div> <br><br>
                     <div id="APcontactinfo" class="APmaster">
                         <ul>
                             <li><h3>Contact Information</h3></li>
-                            <li>Address: {{organization.address}} </li> 
-                            <li>City: {{organization.city}} </li> 
-                            <li>State: {{organization.state}} </li> 
-                            <li>Zip Code: {{organization.zip}} </li> 
-                            <li>Country: {{organization.country}} </li> 
-                            <li>Phone Number: {{organization.phone}} </li>
-                            <li>Website: {{organization.site}} </li>
+                            <li>Address: {{this.address}} </li> 
+                            <li>City: {{this.city}} </li> 
+                            <li>State: {{this.state}} </li> 
+                            <li>Zip Code: {{this.zip}} </li> 
+                            <li>Country: {{this.country}} </li> 
+                            <li>Phone Number: {{this.phone}} </li>
+                            <li>Website: {{this.site}} </li>
                             <li><a href="">Edit</a></li>
                         </ul>
                     </div> <br><br>

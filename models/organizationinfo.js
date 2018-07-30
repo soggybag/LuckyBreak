@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt'); 
 
-const OrgSchema = new Schema({
+const OrginfoSchema = new Schema({
   email:     { type: String, required: true },
   password:  { type: String, required: true },
   orgtype:   { type: String, required: true },
@@ -16,15 +16,9 @@ const OrgSchema = new Schema({
   country:   { type: String, required: true },
   zip:       { type: Number, required: false },
   phone:     { type: Number, required: true },
-  height:    { type: String, required: false },
-  waist:     { type: String, required: false },
-  eye:       { type: String, required: false },
-  hair:      { type: String, required: false },
-  bust:      { type: String, required: false },
-  logo:      { type: Buffer, required: false },
 });
 
-OrgSchema.pre('save', function(next) {
+OrginfoSchema.pre('save', function(next) {
   let agencyuser = this;
 
   bcrypt.hash(agencyuser.password, 10, function (err, hash){
@@ -35,8 +29,8 @@ OrgSchema.pre('save', function(next) {
   })
 });
 
-OrgSchema.statics.authenticate = function(email, password, next) {
-  Org.findOne({ email: email })
+OrginfoSchema.statics.authenticate = function(email, password, next) {
+  Orginfo.findOne({ email: email })
     .exec(function (err, user) {
       if (err) {
         return next(err)
@@ -55,5 +49,5 @@ OrgSchema.statics.authenticate = function(email, password, next) {
     });
 }
 
-const Org = mongoose.model('Org', OrgSchema);
-module.exports = Org;
+const Orginfo = mongoose.model('Orginfo', OrginfoSchema);
+module.exports = Orginfo;
