@@ -1,0 +1,96 @@
+        
+<h1> Talent Edit</h1>
+        <form method="POST" action="/talent/{{user.id}}">
+            <fieldset>
+            <h2>Description: </h2>
+                <p> Fill in your information here</p>
+            </fieldset>
+            <fieldset>
+                <h2>Step 1: Basic Information</h2>
+                    <label>First Name</label> <br> <input name="firstname" type="text" placeholder="Enter you first name" value="{{user.firstname}}"><br><br>
+                    <label>Last Name</label> <br> <input name="lastname" type="text" placeholder="Enter your last name" value="{{user.lastname}}"><br><br>
+                    <label>Gender</label> <br> <input value="{{user.gender}}" name="gender" type="radio" name="gender">Female <br>
+                    <input value="{{user.gender}}" type="radio" name="gender">Male <br> <input value="{{user.gender}}" type="radio" name="gender">TransFemale <br>
+                    <input value="{{user.gender}}" type="radio" name="gender">TransMale <br> <input value="{{user.gender}}" type="radio" name="gender">Gender Nonconforming <br><br>
+                    <label>Date of Birth</label> <br> <input value="{{user.dob}}" type="date" name="dob"> <br><br>
+                    <label>Age</label> <br> <input value="{{user.age}}" type="number" name="age"> <br><br>
+                    <label>Street Address</label> <br> <input value="{{user.street}}" name="street" type="text" placeholder="Enter your street address"><br><br>
+                    <label>City</label> <br> <input value="{{user.city}}" name="city" type="text" placeholder="Enter your city"><br><br>
+                    <label>State</label> <br> <input value="{{user.state}}" name="state" type="text" placeholder="Enter your State"><br><br>
+                    <label>Country</label> <br> <input value="{{user.country}}" name="country" type="text" placeholder="Enter your country"><br><br>
+                    <label>Zip Code</label> <br> <input value="{{user.zip}}" name="zip" type="text" placeholder="Enter your Zip Code"><br><br>
+                    <label>Phone Number (with country code)</label> <br> <input value="{{user.phone}}" name="phone" type="text" placeholder="Enter your phone number"><br><br>
+                    <label for="user-username">Email (to be used as username)</label> <br> <input value="{{user.email}}" name="email" type="text" placeholder="Enter your Email"><br><br>
+                    <label>Password</label><input value="{{user.password}}" type="password" name="password" id="user-password" class= "form-control" placeholder="Password">
+                    <label>Password Confirmation</label><input value="{{user.password}}" type="password" name="password" id="user-password" class= "form-control" placeholder="Password">
+            <h2>Step 2: Measurements</h2>
+                       <fieldset>
+                <label>Height (in cm) </label><br><input value="{{user.height}}" name="height" type="number" placeholder="Enter height in centimeters"><br><br>
+                 <label>Race</label> <br> 
+                    <select value="{{user.race}}" name="race">
+                        <option> None</option>  
+                        <option> White</option> 
+                        <option> Hispanic or Latino </option> 
+                        <option> Black or African American </option>
+                        <option> Native American or American Indian </option> 
+                        <option> Asian / Pacific Islander </option>
+                    </select>
+                  <br><br>
+                <label>Hair Color</label> <br> 
+                    <select value="{{user.hair}}" name="hair">
+                        <option> None</option>  
+                        <option> Blonde</option> 
+                        <option> Black </option> 
+                        <option> Blonde </option>
+                        <option> Brown </option> 
+                        <option> Dark blonde </option>
+                        <option> Dark brown </option> 
+                        <option> Grey </option> 
+                        <option> Light blonde </option> 
+                        <option> Light brown </option> 
+                        <option> Platinum blonde </option>
+                        <option> Red </option> 
+                        <option> Strawberry blonde </option> 
+                    </select>
+                   <br><br>
+                 <label>Eye Color</label> <br> 
+                     <select value="{{user.eye}}" name="eye">
+                        <option> None</option> 
+                        <option> Amber</option>
+                        <option> Black</option>
+                        <option> Blue</option>
+                        <option> Blue-Green</option>
+                        <option> Blue-Grey</option>
+                        <option> Brown</option>
+                        <option> Green</option>
+                        <option> Hazel</option>
+                     </select>
+                   <br><br>
+                  <label>Waist (in cm) </label><br><input value="{{user.waist}}" name="waist" type="number" placeholder="Enter Waist in centimeters"><br><br>
+                  <label>Bust (in cm) </label><br><input value="{{user.bust}}" name="bust" type="number" placeholder="Enter Bust in centimeters"><br><br>
+                  <label>Weight (in kg) </label><br><input value="{{user.weight}}" name="weight" type="number" placeholder="Enter height in kilograms"><br><br>
+            </fieldset>                
+            <h2>Bio</h2>
+                    <fieldset>
+                  <label>Please tell us a little about yourself!</label> <br> <textarea value="{{user.bio}}" rows="10" name="bio" cols="80"></textarea><br><br>
+            </fieldset>
+            <fieldset>
+            <h2>Step 4: Portfolio and Comp Card</h2>
+                <h3>Portfolio</h3>
+                  <label> Full Length</label> <br> <input name="full" type="file" name="pic" accept="image/*"> <br><br>
+                  <label> Waist Up</label> <br> <input name="waistup" type="file" name="pic" accept="image/*"> <br><br>
+                  <label> Close Up</label> <br> <input name="closeup" type="file" name="pic" accept="image/*"> <br><br>
+                  <label> Profile</label> <br> <input name="profile" type="file" name="pic" accept="image/*"> <br><br><br>
+                <h3>Comp Card</h3>
+                  <label> Cover</label> <br> <input name="cover" type="file" name="pic" accept="image/*"> <br><br>
+                  <label>Picture 1</label> <br> <input name="pic1" type="file" name="pic" accept="image/*"> <br><br>
+                  <label>Picture 2</label> <br> <input name="pic2" type="file" name="pic" accept="image/*"> <br><br>
+                  <label>Picture 3</label> <br> <input name="pic3" type="file" name="pic" accept="image/*"> <br><br>
+                  <label>Picture 4</label> <br> <input name="pic4" type="file" name="pic" accept="image/*"> <br><br>
+                <button type="submit" value="Create Profile">Create Profile </button>
+            </fieldset>
+<!--                <input href="/model/signup2" type="submit" value="Next">-->
+            </fieldset>
+        </form>
+       
+   

@@ -400,6 +400,11 @@ h1{
     
 }
 
+.TPul{
+    list-style-type: none;
+    
+}
+
 #TPort{
     text-align: center;
     

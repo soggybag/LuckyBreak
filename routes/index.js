@@ -2,30 +2,58 @@ var express = require('express');
 var router = express.Router();
 
 // 1
-const User = require('../models/user');
-const Org = require('../models/organization');
+const Modelinfo = require('../models/modelinfo');
+const Orginfo = require('../models/organizationinfo');
+const auth = require('./helpers/orgauth')
+const talentauth = require('./helpers/talentauth')
 
+/* GET Logged (agency) in */
+router.use(function(req, res, next) {
+  res.locals.title = "Lucky Break";
+  res.locals.currentUserId = req.session.userId;
+
+  next();
+});
+
+/* Logged out */
+router.get('/logout', (req, res, next) => {
+  if (req.session) {
+    req.session.destroy((err) => {
+      if (err) return next(err);
+    });
+  }
+
+  return res.redirect('/');
+});
+
+
+//-----------------
+/* GET Logged (talent) in */
+router.use(function(req, res, next) {
+  res.locals.title = "Lucky Break";
+  res.locals.currentUserzId = req.session.userzId;
+
+  next();
+});
+
+
+module.exports = router;
 /* GET home page/Log in */
+
 router.get('/', function(req, res, next) {
   res.render('both/mainpage', { title: 'Lucky Break', layout: false });
 });
 
-router.post('/', (req, res, next) => {
-  console.log('logging in!');
-  console.log(req.body);
-
-  res.redirect('/');
-});
-
 /* GET Agency Browsing page. */
-router.get('/agency/', function(req, res, next) {
-  res.render('agency/agencybrowsing', { title: 'Lucky Break' });
+router.get('/organization/', function(req, res, next) {
+  res.render('organization/organizationbrowsing', { title: 'Lucky Break' });
 });
 
 /* GET Agency Profile page. */
-router.get('/agency/profile', function(req, res, next) {
-  res.render('agency/agencyprofile', { title: 'Lucky Break' });
+router.get('/organization/profile', function(req, res, next) {
+  res.render('organization/organizationprofile', { title: 'Lucky Break' });
 });
+
 /* GET Talent Browsing page. */
 router.get('/talent/', function(req, res, next) {
   res.render('talent/talentbrowsing', { title: 'Lucky Break' });

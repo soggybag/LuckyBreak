@@ -4,7 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser')
+const session = require('express-session');
 const nodemailer = require('nodemailer');
+
 
 //var fs = require(‘fs’);
 //var multer  = require('multer')
@@ -27,9 +29,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(session({ secret: 'secret-unique-code', cookie: { maxAge: 3600000 }, resave: true, saveUninitialized: true }));
+
 
 app.use('/', indexRouter);
-app.use('/model', usersRouter);
+app.use('/', usersRouter);
 app.use('/', orgsRouter);
 
 // catch 404 and forward to error handler
@@ -64,7 +68,7 @@ app.use(function(err, req, res, next) {
 //});
 
 // Database setup
-const mongoose = require('mongoose');
+const mongoose = require('mongoose').set('debug', true);
 const mongoURI = 'mongodb://rghosh2008:Rghosh2012@ds243501.mlab.com:43501/luckybreak';
 
 mongoose.connect(mongoURI)

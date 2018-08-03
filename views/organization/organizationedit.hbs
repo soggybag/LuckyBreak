@@ -1,7 +1,5 @@
-
-
-            <h1> Agency Sign Up </h1>
-        <form  method="POST" action="/agency">
+        <h1> Organization Edit </h1>
+        <form  method="POST" action="/organization/{{org.id}}">
             <fieldset>
             <h2>Description: </h2>
                 <p> Fill in your information here</p>
@@ -9,7 +7,7 @@
             <fieldset>
             <h2>Step 1: Basic Information</h2>
                     <label>Are you are?</label> <br>
-                    <select name="orgtype">
+                    <select name="orgtype" value="{{org.orgtype}}">
                         <option>Agency</option>
                         <option>Photographer</option>
                         <option>Brand</option>
@@ -17,31 +15,27 @@
                     
                     <br><br>
                 
-                    <label>Organization Name</label> <br> <input name="name" type="text" placeholder="Enter your organization name"><br><br>
-                    <label>Web Site</label> <br> <input name="site" type="text" placeholder="Enter your Website URL here"><br><br>
-                    <label>Email</label> <br> <input name="email" type="text" placeholder="Enter your Email here"><br><br>
-                    <label>Email Confirmation</label> <br> <input name="email" type="text" placeholder="Enter your Email again"><br><br>
-                    <label>Password</label> <br> <input name="password" type="password" placeholder="Enter your Password here"><br><br>
-                    <label>Password</label> <br> <input name="password" type="password" placeholder="Enter your Password again"><br><br>
-                    <label>Upload Your Organization Logo</label> <br> <input type="file" name="logo" accept="image/*"> <br><br>
+                    <label>Organization Name</label> <br> <input name="name" value="{{org.name}}" type="text" placeholder="Enter your organization name"><br><br>
+                    <label>Web Site</label> <br> <input name="site" value="{{org.site}}" type="text" placeholder="Enter your Website URL here"><br><br>
+                    <label>Upload Your Organization Logo</label> <br> <input type="file" name="logo" value="{{org.logo}}" accept="image/*"> <br><br>
 
             <fieldset>
             <h2>Step 2: Contact Information</h2>
                     <fieldset>
-                    <label>First Name</label> <br> <input name="firstname" type="text" placeholder="Enter you first name"><br><br>
-                    <label>Last Name</label> <br> <input name="lastname" type="text" placeholder="Enter your last name"><br><br>
-                    <label>Street Address</label> <br> <input name="address" type="text" placeholder="Enter your street address"><br><br>
-                    <label>City</label> <br> <input name="city" type="text" placeholder="Enter your city"><br><br>
-                    <label>State</label> <br> <input name="state" type="text" placeholder="Enter your State"><br><br>
-                    <label>Country</label> <br> <input name="country" type="text" placeholder="Enter your country"><br><br>
-                    <label>Zip Code</label> <br> <input name="zip" type="text" placeholder="Enter your Zip Code"><br><br>
-                    <label>Phone Number (with country code)</label> <br> <input name="phone" type="text" placeholder="Enter your phone number"><br><br>
+                    <label>First Name</label> <br> <input name="firstname" value="{{org.firstname}}" type="text" placeholder="Enter you first name"><br><br>
+                    <label>Last Name</label> <br> <input name="lastname" value="{{org.lastname}}" type="text" placeholder="Enter your last name"><br><br>
+                    <label>Street Address</label> <br> <input name="address" value="{{org.address}}" type="text" placeholder="Enter your street address"><br><br>
+                    <label>City</label> <br> <input name="city" value="{{org.city}}" type="text" placeholder="Enter your city"><br><br>
+                    <label>State</label> <br> <input name="state" value="{{org.state}}" type="text" placeholder="Enter your State"><br><br>
+                    <label>Country</label> <br> <input name="country" value="{{org.country}}" type="text" placeholder="Enter your country"><br><br>
+                    <label>Zip Code</label> <br> <input name="zip" value="{{org.zip}}" type="text" placeholder="Enter your Zip Code"><br><br>
+                    <label>Phone Number (with country code)</label> <br> <input name="phone" value="{{org.phone}}" type="text" placeholder="Enter your phone number"><br><br>
             </fieldset>
             <a name="contactinfo2"></a>
             <h2>Step 3: Talent Measurement Preferences</h2>
                     <fieldset>
                     <label>Height (cm)</label> <br> 
-                    <select name="height">
+                    <select name="height" value="{{org.height}}">
                         <option> None </option>
                         <option>120 cm or less</option>
                         <option>125 cm + </option>
@@ -65,7 +59,7 @@
                     </select><br><br>
                     
                      <label>Waist (cm) </label> <br> 
-                    <select name="waist">
+                    <select name="waist" value="{{org.waist}}">
                         <option> None </option>
                         <option>53 cm + </option>
                         <option>54 cm + </option>
@@ -145,35 +139,35 @@
                     </select> <br><br>
                 
                     <label>Eye Color</label> <br> 
-                        <input name="eye" type="checkbox"> None <br>
-                        <input name="eye" type="checkbox"> Amber <br>
-                        <input name="eye" type="checkbox"> Black <br>
-                        <input name="eye" type="checkbox"> Blue <br>
-                        <input name="eye" type="checkbox"> Blue-Green <br>
-                        <input name="eye" type="checkbox"> Blue-Grey <br>
-                        <input name="eye" type="checkbox"> Brown <br>
-                        <input name="eye" type="checkbox"> Green <br>
-                        <input name="eye" type="checkbox"> Hazel <br>
+                        <input name="eye" value="{{org.eye}}" type="checkbox"> None <br>
+                        <input name="eye" value="{{org.eye}}" type="checkbox"> Amber <br>
+                        <input name="eye" value="{{org.eye}}" type="checkbox"> Black <br>
+                        <input name="eye" value="{{org.eye}}" type="checkbox"> Blue <br>
+                        <input name="eye" value="{{org.eye}}" type="checkbox"> Blue-Green <br>
+                        <input name="eye" value="{{org.eye}}" type="checkbox"> Blue-Grey <br>
+                        <input name="eye" value="{{org.eye}}" type="checkbox"> Brown <br>
+                        <input name="eye" value="{{org.eye}}" type="checkbox"> Green <br>
+                        <input name="eye" value="{{org.eye}}" type="checkbox"> Hazel <br>
                    <br><br>
                 
                     <label>Hair Color</label> <br> 
-                        <input name="hair" type="checkbox"> None <br> 
-                        <input name="hair" type="checkbox"> Blonde <br>
-                        <input name="hair" type="checkbox"> Black <br>
-                        <input name="hair" type="checkbox"> Blonde <br>
-                        <input name="hair" type="checkbox"> Brown <br>
-                        <input name="hair" type="checkbox"> Dark blonde <br>
-                        <input name="hair" type="checkbox"> Dark brown <br>
-                        <input name="hair" type="checkbox"> Grey <br>
-                        <input name="hair" type="checkbox"> Light blonde <br>
-                        <input name="hair" type="checkbox"> Light browne <br>
-                        <input name="hair" type="checkbox"> Platinum blonde <br>
-                        <input name="hair" type="checkbox"> Red <br>
-                        <input name="hair" type="checkbox"> Strawberry blonde <br>
+                        <input name="hair" value="{{org.hair}}" type="checkbox"> None <br> 
+                        <input name="hair" value="{{org.hair}}" type="checkbox"> Blonde <br>
+                        <input name="hair" value="{{org.hair}}" type="checkbox"> Black <br>
+                        <input name="hair" value="{{org.hair}}" type="checkbox"> Blonde <br>
+                        <input name="hair" value="{{org.hair}}" type="checkbox"> Brown <br>
+                        <input name="hair" value="{{org.hair}}" type="checkbox"> Dark blonde <br>
+                        <input name="hair" value="{{org.hair}}" type="checkbox"> Dark brown <br>
+                        <input name="hair" value="{{org.hair}}" type="checkbox"> Grey <br>
+                        <input name="hair" value="{{org.hair}}" type="checkbox"> Light blonde <br>
+                        <input name="hair" value="{{org.hair}}" type="checkbox"> Light browne <br>
+                        <input name="hair" value="{{org.hair}}" type="checkbox"> Platinum blonde <br>
+                        <input name="hair" value="{{org.hair}}" type="checkbox"> Red <br>
+                        <input name="hair" value="{{org.hair}}" type="checkbox"> Strawberry blonde <br>
                    <br><br>
                 
                     <label>Bust</label> <br>
-                    <select name="bust">
+                    <select name="bust" value="{{org.bust}}">
                         <option> None </option>
                         <option>53 cm + </option>
                         <option>54 cm + </option>
@@ -251,6 +245,5 @@
                         <option>126 cm +</option>
                         <option>127 cm +</option>
                     </select> <br><br>
-                <button type="submit" value="Create Profile">Create Profile </button>
-        </fieldset>           
-    
+                <button type="submit" value="Create Profile">Edit Profile </button>
+        </fieldset>

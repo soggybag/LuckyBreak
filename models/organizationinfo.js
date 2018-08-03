@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt'); 
+const bcrypt = require('bcrypt');
 
 const OrginfoSchema = new Schema({
   email:     { type: String, required: true },
@@ -16,6 +16,14 @@ const OrginfoSchema = new Schema({
   country:   { type: String, required: true },
   zip:       { type: Number, required: false },
   phone:     { type: Number, required: true },
+  preferences: {
+    height:    { type: String, required: false },
+    waist:     { type: String, required: false },
+    eye:       { type: String, required: false },
+    hair:      { type: String, required: false },
+    bust:      { type: String, required: false },
+    logo:      { type: Buffer, required: false },
+  },
 });
 
 OrginfoSchema.pre('save', function(next) {
@@ -29,9 +37,11 @@ OrginfoSchema.pre('save', function(next) {
   })
 });
 
-OrginfoSchema.statics.authenticate = function(email, password, next) {
+OrginfoSchema.statics.authenticate = function(email, password, next){
+    console.log("Authenticating")
   Orginfo.findOne({ email: email })
-    .exec(function (err, user) {
+    .exec(function (err, agencyuser) {
+      console.log("User found?", agencyuser)
       if (err) {
         return next(err)
       } else if (!agencyuser) {
