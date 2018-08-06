@@ -22,7 +22,7 @@ const OrginfoSchema = new Schema({
     eye:       { type: String, required: false },
     hair:      { type: String, required: false },
     bust:      { type: String, required: false },
-    logo:      { type: Buffer, required: false },
+    logo:      { type: String, required: false },
   },
 });
 

@@ -9,13 +9,19 @@
         <div id="TPortforlio">
             <a href="">Previous</a>
             <div id="TPic1">
-            <img src="" alt="Picture 1">
+            <img src="{{user.full}}" alt="Picture 1">
             </div>
             <div id="TPic2">
-            <img src="" alt="Picture 2">
+            <img src="{{user.closeup}}" alt="Picture 2">
+            </div>
+            <div id="TPic2">
+            <img src="{{user.waistup}}" alt="Picture 3">
+            </div>
+            <div id="TPic2">
+            <img src="{{user.profile}}" alt="Picture 4">
             </div>
             <a href="">Next</a>
-            <a href="">Edit</a>
+            <a href="/talent/{{user._id}}/edit">Edit</a>
         </div><br>
 
     <div id="TPcontainer">
@@ -27,7 +33,7 @@
                 <li>Waist: {{user.waist}} </li>
                 <li>Bust: {{user.bust}} </li>
                 <li>Hair Color: {{user.hair}} </li>
-                <li><a href="">Edit</a></li>
+                <li><a href="/talent/{{user._id}}/edit">Edit</a></li>
             </ul>
         </div>
 
@@ -38,7 +44,7 @@
                 <li>Age: {{user.age}}</li>
                 <li>Race: {{user.race}} </li>
                 <li>Country: {{user.country}} </li>
-                <li><a href="">Edit</a></li>
+                <li><a href="/talent/{{user._id}}/edit">Edit</a></li>
             </ul>
         </div>
     </div>
@@ -54,7 +60,9 @@
         <div>
             <a href="" id="TPback">Back to Profile</a>
         </div>
-
+        <div>
+            <a href="" id="TPback">Comp Card</a>
+        </div>
         <div id="TPcontacts">
             <a href="">Contacts</a>
         </div>

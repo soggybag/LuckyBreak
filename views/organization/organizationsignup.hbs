@@ -1,7 +1,7 @@
 
 
             <h1> Organization Sign Up </h1>
-        <form  method="POST" action="/organization">
+        <form   action="/organization"  method="POST" enctype="multipart/form-data">
             <fieldset>
             <h2>Description: </h2>
                 <p> Fill in your information here</p>
@@ -21,7 +21,7 @@
                     <label>Web Site</label> <br> <input name="site" type="text" placeholder="Enter your Website URL here"><br><br>
                     <label>Organization Email</label> <br> <input name="email" type="text" placeholder="Enter your Email here"><br><br>
                     <label>Password</label> <br> <input name="password" type="password" placeholder="Enter your Password here"><br><br>
-                    <label>Upload Your Organization Logo</label> <br> <input type="file" name="logo" accept="image/*"> <br><br>
+                    <label for="logo">Upload Your Organization Logo</label> <br> <input type="file" name="logo" accept="image/*"> <br><br>
 
             <fieldset>
             <h2>Step 2: Contact Information</h2>

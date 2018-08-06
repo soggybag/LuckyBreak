@@ -8,12 +8,12 @@
         <button class="btn btn-primary">Connect</button> <br>
     </div>
         <div id="APlogo">
-            <img src="" alt="Logo Picture">
-            <a href="">Edit</a>
+            <img src=" {{org.preferences.logo}}" alt="Logo Picture">
+            <a href="/organization/{{org._id}}/edit">Edit</a>
         </div>
             <div id="APdescription" class="APmaster">
                 <h3>Description</h3><br>
-                <a href="">Edit</a>
+                <a href="/organization/{{org._id}}/edit">Edit</a>
             </div>
             {{#if this.preferences}}
                 <div id="APpreference" class="APmaster">
@@ -24,7 +24,7 @@
                         <li>Waists: {{org.waist}} </li>
                         <li>Busts: {{org.bust}} </li>
                         <li>Hair Colors: {{org.hair}} </li>
-                        <li><a href="">Edit</a></li>
+                        <li><a href="/organization/{{org._id}}/edit">Edit</a></li>
                     </ul>
                 </div>
                 {{else}}
@@ -40,7 +40,7 @@
                             <li>Country: {{org.country}} </li>
                             <li>Phone Number: {{org.phone}} </li>
                             <li>Website: {{org.site}} </li>
-                            <li><a href="">Edit</a></li>
+                            <li><a href="/organization/{{org._id}}/edit">Edit</a></li>
                         </ul>
                     </div> <br><br>
                         <div id="APmessagebutt" class="APmaster">

@@ -18,17 +18,24 @@ const ModelinfoSchema = new Schema({
   country:   { type: String, required: true },
   zip:       { type: Number, required: false },
   phone:     { type: Number, required: false },
-  logo:      { type: Buffer, required: false },
   height:    { type: Number, required: false },
   waist:     { type: Number, required: false },
   eye:       { type: String, required: false },
   hair:      { type: String, required: false },
-  bust:      { type: Number, required: false }
+  bust:      { type: Number, required: false },
+  full:      { type: String, required: false },
+  waistup:   { type: String, required: false },
+  closeup:   { type: String, required: false },
+  profile:   { type: String, required: false },
+  cover:     { type: String, required: false },
+  pic1:      { type: String, required: false },
+  pic2:      { type: String, required: false },
+  pic3:      { type: String, required: false },
+  pic4:      { type: String, required: false },
 });
 
 ModelinfoSchema.pre('save', function(next) {
   let userz = this;
-    console.log(userz)
   bcrypt.hash(userz.password, 10, function (err, hash){
     if (err) return next(err);
 
@@ -45,6 +52,7 @@ ModelinfoSchema.statics.authenticate = function(email, password, next) {
       if (err) {
         return next(err)
       } else if (!userz) {
+          console.log(email);
         var err = new Error('User not found.');
         err.status = 401;
         return next(err);
@@ -53,6 +61,8 @@ ModelinfoSchema.statics.authenticate = function(email, password, next) {
         if (result === true) {
           return next(null, userz);
         } else {
+            console.log(password)
+            console.log(userz.password)
           return next();
         }
       });

@@ -1,6 +1,6 @@
         
 <h1> Talent Sign up</h1>
-        <form method="POST" action="/talent">
+        <form method="POST" action="/talent" enctype="multipart/form-data">
             <fieldset>
             <h2>Description: </h2>
                 <p> Fill in your information here</p>
@@ -73,21 +73,23 @@
                     <fieldset>
                   <label>Please tell us a little about yourself!</label> <br> <textarea rows="10" name="bio" cols="80"></textarea><br><br>
             </fieldset>
+<!--
             <fieldset>
             <h2>Step 4: Portfolio and Comp Card</h2>
                 <h3>Portfolio</h3>
-                  <label> Full Length</label> <br> <input name="full" type="file" name="pic" accept="image/*"> <br><br>
-                  <label> Waist Up</label> <br> <input name="waistup" type="file" name="pic" accept="image/*"> <br><br>
-                  <label> Close Up</label> <br> <input name="closeup" type="file" name="pic" accept="image/*"> <br><br>
-                  <label> Profile</label> <br> <input name="profile" type="file" name="pic" accept="image/*"> <br><br><br>
+                  <label> Full Length</label> <br> <input name="talentphotos" type="file" accept="image/*"> <br><br>
+                  <label> Waist Up</label> <br> <input name="talentphotos" type="file" accept="image/*"> <br><br>
+                  <label> Close Up</label> <br> <input name="talentphotos" type="file" accept="image/*"> <br><br>
+                  <label> Profile</label> <br> <input name="talentphotos" type="file" accept="image/*"> <br><br><br>
                 <h3>Comp Card</h3>
-                  <label> Cover</label> <br> <input name="cover" type="file" name="pic" accept="image/*"> <br><br>
-                  <label>Picture 1</label> <br> <input name="pic1" type="file" name="pic" accept="image/*"> <br><br>
-                  <label>Picture 2</label> <br> <input name="pic2" type="file" name="pic" accept="image/*"> <br><br>
-                  <label>Picture 3</label> <br> <input name="pic3" type="file" name="pic" accept="image/*"> <br><br>
-                  <label>Picture 4</label> <br> <input name="pic4" type="file" name="pic" accept="image/*"> <br><br>
-                <button type="submit" value="Create Profile">Create Profile </button>
+                  <label> Cover</label> <br> <input name="talentphotos" type="file" accept="image/*"> <br><br>
+                  <label>Picture 1</label> <br> <input name="talentphotos" type="file" accept="image/*"> <br><br>
+                  <label>Picture 2</label> <br> <input name="talentphotos" type="file" accept="image/*"> <br><br>
+                  <label>Picture 3</label> <br> <input name="talentphotos" type="file" accept="image/*"> <br><br>
+                  <label>Picture 4</label> <br> <input name="talentphotos" type="file" accept="image/*"> <br><br>
+                
             </fieldset>
+-->             <button type="submit" value="Create Profile">Create Profile </button>
 <!--                <input href="/model/signup2" type="submit" value="Next">-->
             </fieldset>
         </form>

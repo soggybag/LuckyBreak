@@ -14,13 +14,22 @@ const express = require('express');
 
 const Modelinfo = require('../models/modelinfo');
 
+require('dotenv').config()
+
 // --------------------------------------------------------------
 // Define Router /users
 
 const router = express.Router();
 const talentauth = require('./helpers/talentauth')
+const multer = require('multer')
+const upload = multer({ dest: '/uploads' })
+var cloudinary = require('cloudinary');
 
-
+cloudinary.config({ 
+  cloud_name: 'lucky-break', 
+  api_key: '924158175189213', 
+  api_secret: 'ktI0M-FDFBZiZbkeqbOVSdhTLVg' 
+});
 // --------------------------------------------------------------
 // Define routes 
 
@@ -61,19 +70,19 @@ router.get('/talent/signup', function(req, res, next) {
 
 // ------------------------------------------------------------------------------------------
 // Sends data from sign up page to database
-router.post('/talent', (req, res, next) => {
-//    console.log("I'm getting here")
-//    console.log(req.body);
+router.post('/talent', (req, res,next) => {
+    console.log(req.body)
     const talent = new Modelinfo(req.body);
-    talent.save(function(err, talent) {
+
+     talent.save(function(err, talent) {
     if (err) {
       console.log(err);
-    }
-
-    // 4
+        }
+        });
     res.redirect(`/talent/${talent._id}`);
-  });
-});
+    });   
+    
+
 
 // -------------------------------------------------------------------------------------------
 // Get user data from the database to be posted on profiles.
@@ -89,6 +98,24 @@ router.get('/talent/:id', (req, res) => {
     // 3
       console.log(user)
     res.render('talent/talentprofile', {user});
+
+  });
+});
+
+// -------------------------------------------------------------------------------------------
+// Get user data from the database to be posted on Comp Card.
+
+router.get('/talent/:id', (req, res) => {
+    console.log(req.params.id)
+  // 2
+  Modelinfo.findById(req.params.id, (err, user) => {
+    if (err) {
+      console.log(err);
+    }
+
+    // 3
+      console.log(user)
+    res.render('/compcard', {user});
 
   });
 });
@@ -111,7 +138,9 @@ router.get('/talent/:id', (req, res) => {
 // -------------------------------------------------------------------------------------------
 // Talent log in
 router.post('/login', (req, res, next) => {
+    console.log(req.body.password);
   Modelinfo.authenticate(req.body.email, req.body.password, (err, userz) => {
+      
           const talent = new Modelinfo(req.body);
     if (err || !userz) {
       const next_error = new Error("Email or password incorrect");
@@ -128,7 +157,7 @@ router.post('/login', (req, res, next) => {
 
 // -------------------------------------------------------------------------------------------
 // editting and updating the organization profile.
-//Agency Profile edit
+//Talent Profile edit
 router.get('/talent/:id/edit', talentauth.requireLogin, (req, res, next) => {
   Modelinfo.findById(req.params.id, function(err, user){
      if(err) {console.error(err) };
@@ -139,14 +168,15 @@ router.get('/talent/:id/edit', talentauth.requireLogin, (req, res, next) => {
 
 
 
-//// Agency Profile update
-router.post('/talent/:id/edit', talentauth.requireLogin, (req, res, next) => {
- Modelinfo.findByIdAndUpdate(req.params.id, req.body, function(err, user) {
-    if(err) { console.error(err) };
-
-    res.redirect('/profile' + req.params.id);
-  });
-});
+//// Talent Profile update
+// UPDATE
+router.put('/talent/:id', (req, res) => {
+  Modelinfo.findByIdAndUpdate(req.params.id, req.body).then((user) => {
+    res.redirect('/talent/' + user._id)
+  }).catch((err) => {
+    console.log(err.message)
+  })
+})
 
 
 module.exports = router;
