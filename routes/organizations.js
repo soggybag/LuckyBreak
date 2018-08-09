@@ -25,8 +25,8 @@ const auth = require('./helpers/orgauth')
 var cloudinary = require('cloudinary');
 // -------------------------------------------------------------------------------------------
 // Routes connected to sign up page
-const multer  = require('multer')
-const upload = multer()
+//const multer  = require('multer')
+//const upload = multer()
 
 cloudinary.config({ 
   cloud_name: 'lucky-break', 
@@ -43,26 +43,26 @@ router.get('/organization/signup', function(req, res, next) {
 
 // -------------------------------------------------------------------------------------------
 // Sends data from sign up page to database
-router.post('/organization', function (req, res,next) {
-    console.log(req.body)
-    for(let prop in req.body){
-        console.log(prop);
-    }
-    const org = new Orginfo(req.body);
-//    console.log(req.file)
-    cloudinary.uploader.upload(req.file.path, function(result) { 
-    org.preferences.logo = result.url;
-     org.save(function(err, org) {
-    if (err) {
-      console.log(err);
-        }
-        });
-    });
-   
-
-    res.redirect(`/organization/${org._id}`);
-});
-       
+//router.post('/organization', function (req, res,next) {
+//    console.log(req.body)
+//    for(let prop in req.body){
+//        console.log(prop);
+//    }
+//    const org = new Orginfo(req.body);
+////    console.log(req.file)
+//    cloudinary.uploader.upload(req.file.path, function(result) { 
+//    org.preferences.logo = result.url;
+//     org.save(function(err, org) {
+//    if (err) {
+//      console.log(err);
+//        }
+//        });
+//    });
+//   
+//
+//    res.redirect(`/organization/${org._id}`);
+//});
+//       
 
 
 
