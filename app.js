@@ -86,4 +86,10 @@ mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+// server and listening
+let port = process.env.PORT || 8000;
+app.listen(port, function() {
+    console.log("App is running on port " + port);
+});
+
 module.exports = app;
