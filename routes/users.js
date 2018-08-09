@@ -13,6 +13,7 @@ const express = require('express');
 // Local Dependanncies
 
 const Modelinfo = require('../models/modelinfo');
+const Modelpics = require('../models/modelpics');
 
 require('dotenv').config()
 
@@ -20,10 +21,14 @@ require('dotenv').config()
 // Define Router /users
 
 const router = express.Router();
-const talentauth = require('./helpers/talentauth')
-const multer = require('multer')
-const upload = multer({ dest: '/uploads' })
-var cloudinary = require('cloudinary');
+const talentauth = require('./helpers/talentauth');
+const cloudinary = require('cloudinary');
+const methodOverride = require('method-override');
+const cloudinaryStorage = require('multer-storage-cloudinary');
+const multer = require('multer');
+
+//const parser = multer({ storage: storage });
+const upload = multer({ dest: '/uploads' });
 
 cloudinary.config({ 
   cloud_name: 'lucky-break', 
@@ -47,38 +52,26 @@ router.get('/talent/signup', function(req, res, next) {
   res.render('talent/talentsignup', { title: 'Lucky Break' });
 });
 
-
-
-// -------------------------------------------------------------------------------------------
-// Sends data from sign up page to database
-
-//router.post('/', (req, res) => {
-//  // 2
-//  const user = new User(req.body);
-//    console.log("2")
-//  // 3
-//  user.save(function(err, user) {
-//    if (err) {
-//      console.log(err);
-//    }
-//
-//    // 4
-//    return res.redirect('/profile/' + user.id);
-//  });
-//});
-
-
 // ------------------------------------------------------------------------------------------
 // Sends data from sign up page to database
 router.post('/talent', (req, res,next) => {
     console.log(req.body)
     const talent = new Modelinfo(req.body);
-
-     talent.save(function(err, talent) {
-    if (err) {
-      console.log(err);
-        }
+    
+        cloudinary.uploader.upload(req.file.path, function(result) { 
+        talent.preferences.full = result.url;
+        talent.save(function(err, talent) {
+            if (err) {
+              console.log(err);
+            }
         });
+    });
+
+//     talent.save(function(err, talent) {
+//    if (err) {
+//      console.log(err);
+//        }
+//        });
     res.redirect(`/talent/${talent._id}`);
     });   
     
@@ -120,63 +113,59 @@ router.get('/talent/:id', (req, res) => {
   });
 });
 
-//router.get('/talent/:id', (req, res) => {
-//  // 2
-//  Review.findById(req.params.id, (err, review) => {
-//    if (err) {
-//      console.log(err);
-//    }
-//
-//    // 3
-//    res.render('reviews/show', {
-//      review: review
-//    });
-//  });
-//});
-
-
 // -------------------------------------------------------------------------------------------
 // Talent log in
-router.post('/login', (req, res, next) => {
-    console.log(req.body.password);
-  Modelinfo.authenticate(req.body.email, req.body.password, (err, userz) => {
-      
-          const talent = new Modelinfo(req.body);
-    if (err || !userz) {
-      const next_error = new Error("Email or password incorrect");
-      next_error.status = 401;
-
-      return next(next_error);
-    } else {
-      req.session.userzId = userz._id;
-
-      return res.redirect(`/talent/${talent._id}`) ;
+router.post('/logintalent', (req, res, next) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  // Find this user name
+  Modelinfo.findOne({ email }, 'email password').then((user) => {
+    if (!user) {
+      // User not found
+      return res.status(401).send({ message: 'Wrong Email or Password' });
     }
-  });
-});
+      res.redirect(`/talent/${user.id}`);
+    });
+  })
+
+
+
 
 // -------------------------------------------------------------------------------------------
 // editting and updating the organization profile.
 //Talent Profile edit
-router.get('/talent/:id/edit', talentauth.requireLogin, (req, res, next) => {
-  Modelinfo.findById(req.params.id, function(err, user){
-     if(err) {console.error(err) };
-      res.render('talent/talentedit', { user: user});
-  });
+router.get('/talent/:id/photos/edit', function (req, res, next) {
+  Modelinfo.findById(req.params.id, function(err, user) {
+    res.render('talent/talentprofilepicsedit', {user: user});
+  })
 });
 
+// -
+// -------------------------------------------------------------------------------------------
+// add some user pictures 
 
+// define storage
 
+const storage = cloudinaryStorage({
+  cloudinary: cloudinary,
+  folder: 'talentimages',
+  allowedFormats: ['jpg', 'png'],
+  filename: function (req, file, cb) {
+    cb(undefined, 'my-file-name');
+  }
+});
+ 
 
-//// Talent Profile update
-// UPDATE
-router.put('/talent/:id', (req, res) => {
-  Modelinfo.findByIdAndUpdate(req.params.id, req.body).then((user) => {
-    res.redirect('/talent/' + user._id)
-  }).catch((err) => {
-    console.log(err.message)
-  })
+// setup parser
+
+let cpuUpload = upload.fields([{ name: "full", maxCount: 1 }, {name: "waistup", maxCount: 1}]);
+
+router.post('/talent/photos/:id', cpuUpload, async (req, res) => {
+let user = new Modelpics({
+username: req.body.username,
+profilePhoto: req.files.profilePhoto[0]
 })
+});
 
 
 module.exports = router;

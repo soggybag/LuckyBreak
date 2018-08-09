@@ -9,19 +9,20 @@ const nodemailer = require('nodemailer');
 const crypto = require('crypto')
 const shortid = require('short-id');
 const imgurUploader = require('imgur-uploader');
-const methodOverride = require('method-override')
-
+const methodOverride = require('method-override');
+///////////////////////////////////////////////////////////////////////////////////////
 
 
 var Upload = require('s3-uploader');
 var fs = require('fs');
 var multer = require('multer');
 var cloudinary = require('cloudinary');
+var cloudinaryStorage = require('multer-storage-cloudinary');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var orgsRouter = require('./routes/organizations')
 require('dotenv').config()
-
+///////////////////////////////////////////////////////////////////////////////////////
 
 var app = express();
 
@@ -42,20 +43,24 @@ app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(session({ secret: 'secret-unique-code', cookie: { maxAge: 3600000 }, resave: true, saveUninitialized: true }));
 
-// Image upload setup organization
-app.use(multer({ dest: './public/organizationimages/',
- rename: function (fieldname, filename) {
-   return filename;
- },
-}).single('logo'));
+///////////////////////////////////////////////////////////////////////////////////////
+// Organization Image upload setup 
+//app.use(multer({ dest: './public/organizationimages/',
+// rename: function (fieldname, filename) {
+//   return filename;
+// },
+//}).single('logo'));
 
-
+///////////////////////////////////////////////////////////////////////////////////////
+// Talent Image upload setup 
 //app.use(multer({ dest: './public/talentimages/',
 // rename: function (fieldname, filename) {
 //   return filename;
 // },
-//}).array('talentphotos',10));
+//}).single('full'));
 
+
+/////////////////////////////////////////////////////////////////////////////////////////
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
@@ -76,7 +81,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+///////////////////////////////////////////////////////////////////////////////////////
 // Database setup
 const mongoose = require('mongoose').set('debug', true);
 const mongoURI = 'mongodb://rghosh2008:Rghosh2012@ds243501.mlab.com:43501/luckybreak';
@@ -86,4 +91,9 @@ mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+var FriendsOfFriends = require('friends-of-friends');
+var fof = new FriendsOfFriends(mongoose);
+// works with or without 'new'
+var FriendsOfFriends = require('friends-of-friends')(mongoose);
+///////////////////////////////////////////////////////////////////////////////////////
 module.exports = app;

@@ -1,19 +1,19 @@
 
 
-            <h1> Organization Sign Up </h1>
-        <form   action="/organization"  method="POST" enctype="multipart/form-data">
-            <fieldset>
-            <h2>Description: </h2>
-                <p> Fill in your information here</p>
-            </fieldset>
-            <fieldset>
-            <h2>Step 1: Basic Information</h2>
-                    <label>Are you are?</label> <br>
-                    <select name="orgtype">
-                        <option>Agency</option>
-                        <option>Photographer</option>
-                        <option>Brand</option>
-                    </select> 
+<h1> Organization Sign Up </h1>
+    <form action="/organization"  method="POST" enctype="multipart/form-data">
+    <fieldset>
+        <h2>Description: </h2>
+        <p> Fill in your information here</p>
+    </fieldset>
+    <fieldset>
+        <h2>Step 1: Basic Information</h2>
+        <label>Are you are?</label> <br>
+        <select name="orgtype">
+            <option>Agency</option>
+            <option>Photographer</option>
+            <option>Brand</option>
+        </select> 
                     
                     <br><br>
                 
@@ -21,7 +21,8 @@
                     <label>Web Site</label> <br> <input name="site" type="text" placeholder="Enter your Website URL here"><br><br>
                     <label>Organization Email</label> <br> <input name="email" type="text" placeholder="Enter your Email here"><br><br>
                     <label>Password</label> <br> <input name="password" type="password" placeholder="Enter your Password here"><br><br>
-                    <label for="logo">Upload Your Organization Logo</label> <br> <input type="file" name="logo" accept="image/*"> <br><br>
+                    <label for="logo">Upload Your Organization Logo</label> <br> 
+                    <input type="file" name="logo" accept="image/*"> <br><br>
 
             <fieldset>
             <h2>Step 2: Contact Information</h2>
@@ -33,7 +34,8 @@
                     <label>State</label> <br> <input name="state" type="text" placeholder="Enter your State"><br><br>
                     <label>Country</label> <br> <input name="country" type="text" placeholder="Enter your country"><br><br>
                     <label>Zip Code</label> <br> <input name="zip" type="text" placeholder="Enter your Zip Code"><br><br>
-                    <label>Phone Number (with country code)</label> <br> <input name="phone" type="text" placeholder="Enter your phone number"><br><br>
+                    <label>Phone Number (with country code)</label> <br> 
+                    <input name="phone" type="text" placeholder="Enter your phone number"><br><br>
             </fieldset>
             <a name="contactinfo2"></a>
             <h2>Step 3: Talent Measurement Preferences</h2>
@@ -250,5 +252,5 @@
                         <option>127 cm +</option>
                     </select> <br><br>
                 <button type="submit" value="Create Profile">Create Profile </button>
-        </fieldset>           
-    
+        </fieldset>
+                </form>

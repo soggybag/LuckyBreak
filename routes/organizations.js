@@ -23,19 +23,21 @@ require('dotenv').config()
 const router = express.Router();
 const auth = require('./helpers/orgauth')
 var cloudinary = require('cloudinary');
+const methodOverride = require('method-override')
+
 // -------------------------------------------------------------------------------------------
 // Routes connected to sign up page
-const multer  = require('multer')
-const upload = multer({ dest: '/uploads' })
+const multer  = require('multer');
+const upload = multer({ dest: '/uploads' });
 
 cloudinary.config({ 
   cloud_name: 'lucky-break', 
   api_key: '924158175189213', 
   api_secret: 'ktI0M-FDFBZiZbkeqbOVSdhTLVg' 
 });
+
 /* GET Agency Signup page. */
 router.get('/organization/signup', function(req, res, next) {
-
   res.render('organization/organizationsignup', { title: 'Lucky Break' });
 });
 
@@ -43,23 +45,22 @@ router.get('/organization/signup', function(req, res, next) {
 
 // -------------------------------------------------------------------------------------------
 // Sends data from sign up page to database
-router.post('/organization', function (req, res,next) {
-    console.log(req.body)
-    for(let prop in req.body){
-        console.log(prop);
-    }
-    const org = new Orginfo(req.body);
-//    console.log(req.file)
-    cloudinary.uploader.upload(req.file.path, function(result) { 
-    org.preferences.logo = result.url;
-     org.save(function(err, org) {
-    if (err) {
-      console.log(err);
-        }
-        });
-    });
-   
+router.post('/organization', function (req, res, next) {
+    console.log("TEST ", req.body)
+    console.log("===========================================================")
+    console.log(req.file)
 
+    const org = new Orginfo(req.body);
+    // console.log(req.file)
+//    cloudinary.uploader.upload(req.file.path, function(result) { 
+//        org.preferences.logo = result.url;
+//        org.save(function(err, org) {
+//            if (err) {
+//              console.log(err);
+//            }
+//        });
+//    });
+//   
     res.redirect(`/organization/${org._id}`);
 });
        
@@ -84,22 +85,21 @@ router.get('/organization/:id', (req, res, next) => {
 // -------------------------------------------------------------------------------------------
 // Agency Log in
 
-router.post('/login', (req, res, next) => {
-  Orginfo.authenticate(req.body.email, req.body.password, (err, agencyuser) => {
-          const org = new Orginfo(req.body);
-    if (err || !agencyuser) {
-      const next_error = new Error("Email or password incorrect");
-      next_error.status = 401;
-
-      return next(next_error);
-    } else {
-        console.log(agencyuser._id);
-      req.session.userId = agencyuser._id;
-        
-      return res.redirect(`/organization/${org._id}`) ;
+router.post('/loginorgs', (req, res, next) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  // Find this user name
+  Orginfo.findOne({ email }, 'email password').then((org) => {
+    if (!org) {
+      // User not found
+      return res.status(401).send({ message: 'Wrong Email or Password' });
     }
-  });
-});
+      console.log(`org.id`)
+      res.redirect(`/organization/${org.id}`);
+    });
+  })
+
+
 
 // -------------------------------------------------------------------------------------------
 // editting and updating the organization profile.

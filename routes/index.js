@@ -69,6 +69,13 @@ router.get('/compcard', function(req, res, next) {
   res.render('talent/compcard', { title: 'Lucky Break' });
 });
 
+/* GET Talent Profile Pictures Edit page. */
+router.get('/talent/photos/edit', (req, res) => {
+    console.log('-------------------------------------');
+    console.log('get:/talent/photos/edit');
+  res.render('talent/talentprofilepicsedit', { title: 'Lucky Break' });
+});
+
 /* GET Contact Us page. */
 router.get('/contact', function(req, res, next) {
   res.render('both/contact', { title: 'Lucky Break' });

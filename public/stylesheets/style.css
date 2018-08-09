@@ -598,4 +598,36 @@ h1{
     
 }
 
+/* Your Connections Page  */
+
+.yourconmaster{
+    
+
+    
+}
+.yourconbox{
+  align-content: stretch;
+  height: 100%;
+  border: solid 2px black;
+  height: 150px;
+  width: 150px;
+  flex:1;    
+}
+
+.yourcondescrip{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  border: solid 2px black;
+  height: 150px;
+  width: 75%;      
+  flex:7;
+}
+
+.yourcontotbox{
+    padding: 50px;
+    display: flex;
+    
+}
+
 
