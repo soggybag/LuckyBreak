@@ -43,11 +43,11 @@ app.use(logger('dev'));
 app.use(session({ secret: 'secret-unique-code', cookie: { maxAge: 3600000 }, resave: true, saveUninitialized: true }));
 
 // Image upload setup organization
-app.use(multer({ dest: './public/organizationimages/',
- rename: function (fieldname, filename) {
-   return filename;
- },
-}).single('logo'));
+//app.use(multer({ dest: './public/organizationimages/',
+// rename: function (fieldname, filename) {
+//   return filename;
+// },
+//}).single('logo'));
 
 
 //app.use(multer({ dest: './public/talentimages/',

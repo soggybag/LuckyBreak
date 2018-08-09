@@ -26,7 +26,7 @@ var cloudinary = require('cloudinary');
 // -------------------------------------------------------------------------------------------
 // Routes connected to sign up page
 const multer  = require('multer')
-const upload = multer({ dest: '/uploads' })
+const upload = multer()
 
 cloudinary.config({ 
   cloud_name: 'lucky-break', 
