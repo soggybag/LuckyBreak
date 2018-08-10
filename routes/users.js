@@ -21,8 +21,8 @@ require('dotenv').config()
 
 const router = express.Router();
 const talentauth = require('./helpers/talentauth')
-const multer = require('multer')
-const upload = multer()
+//const multer = require('multer')
+//const upload = multer()
 var cloudinary = require('cloudinary');
 
 cloudinary.config({ 
