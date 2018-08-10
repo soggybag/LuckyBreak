@@ -30,10 +30,10 @@ const methodOverride = require('method-override')
 const multer  = require('multer');
 const upload = multer({ dest: '/uploads' });
 
-cloudinary.config({ 
-  cloud_name: 'lucky-break', 
-  api_key: '924158175189213', 
-  api_secret: 'ktI0M-FDFBZiZbkeqbOVSdhTLVg' 
+cloudinary.config({
+  cloud_name: 'lucky-break',
+  api_key: '924158175189213',
+  api_secret: 'ktI0M-FDFBZiZbkeqbOVSdhTLVg'
 });
 
 /* GET Agency Signup page. */
@@ -52,7 +52,7 @@ router.post('/organization', function (req, res, next) {
 
     const org = new Orginfo(req.body);
     // console.log(req.file)
-//    cloudinary.uploader.upload(req.file.path, function(result) { 
+//    cloudinary.uploader.upload(req.file.path, function(result) {
 //        org.preferences.logo = result.url;
 //        org.save(function(err, org) {
 //            if (err) {
@@ -60,10 +60,10 @@ router.post('/organization', function (req, res, next) {
 //            }
 //        });
 //    });
-//   
+//
     res.redirect(`/organization/${org._id}`);
 });
-       
+
 
 
 
