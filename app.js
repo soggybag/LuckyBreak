@@ -15,9 +15,9 @@ const methodOverride = require('method-override');
 
 var Upload = require('s3-uploader');
 var fs = require('fs');
-var multer = require('multer');
+// var multer = require('multer');
 var cloudinary = require('cloudinary');
-var cloudinaryStorage = require('multer-storage-cloudinary');
+// var cloudinaryStorage = require('multer-storage-cloudinary');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var orgsRouter = require('./routes/organizations')
@@ -44,7 +44,7 @@ app.use(logger('dev'));
 app.use(session({ secret: 'secret-unique-code', cookie: { maxAge: 3600000 }, resave: true, saveUninitialized: true }));
 
 ///////////////////////////////////////////////////////////////////////////////////////
-// Organization Image upload setup 
+// Organization Image upload setup
 //app.use(multer({ dest: './public/organizationimages/',
 // rename: function (fieldname, filename) {
 //   return filename;
@@ -52,7 +52,7 @@ app.use(session({ secret: 'secret-unique-code', cookie: { maxAge: 3600000 }, res
 //}).single('logo'));
 
 ///////////////////////////////////////////////////////////////////////////////////////
-// Talent Image upload setup 
+// Talent Image upload setup
 //app.use(multer({ dest: './public/talentimages/',
 // rename: function (fieldname, filename) {
 //   return filename;
